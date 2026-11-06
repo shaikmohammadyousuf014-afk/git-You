@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yousuf Grand Convention</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f5f9;
+    color: #222;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    background: #17365d;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+input, select {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    margin: 7px 0 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #17365d;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* LOGIN */
+
+#loginPage {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #101d32, #31577c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 35px #0005;
+}
+
+.login-box h1 {
+    color: #17365d;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.login-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.pin-input {
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 12px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 13px;
+    font-size: 16px;
+}
+
+#errorMsg {
+    color: red;
+    margin-top: 12px;
+}
+
+/* DASHBOARD */
+
+#dashboard {
+    display: none;
+}
+
+.sidebar {
+    width: 240px;
+    background: #132b48;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    padding: 25px 15px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    background: transparent;
+    padding: 13px;
+    font-size: 15px;
+}
+
+.sidebar button:hover {
+    background: #294c70;
+}
+
+.main {
+    margin-left: 240px;
+    padding: 25px;
+}
+
+.topbar {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.topbar h2 {
+    margin: 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.card h3 {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.card h1 {
+    color: #17365d;
+    font-size: 27px;
+}
+
+.content-box {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px #00000010;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    background: #17365d;
+    color: white;
+}
+
+.available {
+    color: green;
+    font-weight: bold;
+}
+
+.occupied {
+    color: red;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+}
+
+.form-grid button {
+    width: fit-content;
+    align-self: end;
+    margin-bottom: 15px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.small-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+    margin: 2px;
+}
+
+.danger {
+    background: #c0392b;
+}
+
+.success {
+    background: #218c50;
+}
+
+@media(max-width: 750px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar button {
+        display: inline-block;
+        width: auto;
+        margin: 3px;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #billPrint, #billPrint * {
+        visibility: visible;
+    }
+
+    #billPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 30px;
+    }
+
+    #billPrint button {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+    <div class="login-box">
+        <div class="login-icon">🏨</div>
+        <h1>YOUSUF GRAND</h1>
+        <h1>CONVENTION</h1>
+        <p>Hotel Management System</p>
+
+        <label>Enter Your PIN</label>
+        <input
+            type="password"
+            id="pin"
+            class="pin-input"
+            placeholder="••••"
+            maxlength="4"
+            inputmode="numeric"
+        >
+
+        <button onclick="login()">LOGIN</button>
+        <p id="errorMsg"></p>
+    </div>
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+
+    <div class="sidebar">
+        <h2>🏨 YOUSUF GRAND</h2>
+
+        <button onclick="showSection('home')">🏠 Dashboard</button>
+        <button onclick="showSection('rooms')">🛏️ Room Details</button>
+        <button onclick="showSection('guests')">👥 Guest Profiles</button>
+        <button onclick="showSection('bookings')">📋 Bookings</button>
+        <button onclick="showSection('newBooking')">➕ New Booking</button>
+        <button onclick="showSection('history')">📚 Booking History</button>
+        <button onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <div class="main">
+
+        <div class="topbar">
+            <h2>YOUSUF GRAND CONVENTION</h2>
+            <span id="today"></span>
+        </div>
+
+        <!-- HOME -->
+
+        <div id="home" class="section active">
+            <h2>Hotel Dashboard</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Rooms</h3>
+                    <h1 id="totalRooms">12</h1>
+                </div>
+
+                <div class="card">
+                    <h3>Available Rooms</h3>
+                    <h1 id="availableRooms">0</h1>
+                </div>
+
+                <div class="card">
+                    <h3>Occupied Rooms</h3>
+                    <h1 id="occupiedRooms">0</h1>
+                </div>
+
+                <div class="card">
+                    <h3>Total Revenue</h3>
+                    <h1 id="revenue">₹0</h1>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>Welcome to Yousuf Grand Convention</h2>
+                <p>
+                    Manage hotel rooms, guest information, reservations,
+                    check-outs and billing from one place.
+                </p>
+                <br>
+                <h3>Hotel Facilities</h3>
+                <br>
+                <p>🛏️ Comfortable Rooms</p>
+                <p>🍽️ Restaurant</p>
+                <p>🚗 Parking Facility</p>
+                <p>📶 Free Wi-Fi</p>
+                <p>❄️ Air Conditioned Rooms</p>
+                <p>🎉 Convention Hall</p>
+            </div>
+        </div>
+
+
+        <!-- ROOMS -->
+
+        <div id="rooms" class="section">
+            <h2>Room Details</h2>
+
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room No</th>
+                            <th>Room Type</th>
+                            <th>Price / Day</th>
+                            <th>Facilities</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roomTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- GUESTS -->
+
+        <div id="guests" class="section">
+            <h2>Guest Profiles</h2>
+
+            <div class="content-box">
+                <input
+                    type="text"
+                    id="guestSearch"
+                    placeholder="Search guest name or mobile..."
+                    oninput="displayGuests()"
+                >
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guest Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody id="guestTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- BOOKINGS -->
+
+        <div id="bookings" class="section">
+            <h2>Current Bookings</h2>
+
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guest</th>
+                            <th>Room</th>
+                            <th>Check-in</th>
+                            <th>Days</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- NEW BOOKING -->
+
+        <div id="newBooking" class="section">
+            <h2>Create New Booking</h2>
+
+            <div class="content-box">
+                <form onsubmit="addBooking(event)">
+
+                    <div class="form-grid">
+
+                        <div>
+                            <label>Guest Name</label>
+                            <input type="text" id="guestName" required>
+                        </div>
+
+                        <div>
+                            <label>Mobile Number</label>
+                            <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+                        </div>
+
+                        <div>
+                            <label>Email</label>
+                            <input type="email" id="email">
+                        </div>
+
+                        <div>
+                            <label>City</label>
+                            <input type="text" id="city" required>
+                        </div>
+
+                        <div>
+                            <label>Select Room</label>
+                            <select id="roomSelect" required></select>
+                        </div>
+
+                        <div>
+                            <label>Check-in Date</label>
+                            <input type="date" id="checkin" required>
+                        </div>
+
+                        <div>
+                            <label>Number of Days</label>
+                            <input type="number" id="days" min="1" value="1" required>
+                        </div>
+
+                    </div>
+
+                    <button type="submit">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div id="history" class="section">
+            <h2>Booking History</h2>
+
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Guest</th>
+                            <th>Room</th>
+                            <th>Check-in</th>
+                            <th>Check-out</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- BILL -->
+
+        <div id="billPrint" class="section">
+            <h2>Guest Bill</h2>
+            <div id="billDetails" class="content-box"></div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+// LOGIN USING PIN ONLY
+
+const HOTEL_PIN = "1234";
+
+function login() {
+    const enteredPin = document.getElementById("pin").value;
+
+    if (enteredPin === HOTEL_PIN) {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("dashboard").style.display = "block";
+
+        document.getElementById("today").innerText =
+            new Date().toLocaleDateString("en-IN");
+
+        renderAll();
+    } else {
+        document.getElementById("errorMsg").innerText =
+            "Incorrect PIN! Please try again.";
+
+        document.getElementById("pin").value = "";
+    }
+}
+
+document.getElementById("pin").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") login();
+});
+
+function logout() {
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginPage").classList.remove("hidden");
+    document.getElementById("pin").value = "";
+    document.getElementById("errorMsg").innerText = "";
+}
+
+
+// ROOM DATA
+
+const initialRooms = [
+    {no:101,type:"Single",price:1200,facility:"Wi-Fi, TV, AC"},
+    {no:102,type:"Single",price:1200,facility:"Wi-Fi, TV, AC"},
+    {no:103,type:"Double",price:2000,facility:"Wi-Fi, TV, AC"},
+    {no:104,type:"Double",price:2000,facility:"Wi-Fi, TV, AC"},
+    {no:105,type:"Deluxe",price:3000,facility:"AC, TV, Mini Bar"},
+    {no:106,type:"Deluxe",price:3000,facility:"AC, TV, Mini Bar"},
+    {no:107,type:"Suite",price:4500,facility:"Luxury Bed, AC, TV"},
+    {no:108,type:"Suite",price:4500,facility:"Luxury Bed, AC, TV"},
+    {no:109,type:"Family",price:4000,facility:"Family Bed, AC, TV"},
+    {no:110,type:"Family",price:4000,facility:"Family Bed, AC, TV"},
+    {no:111,type:"Luxury Suite",price:6000,facility:"Premium Facilities"},
+    {no:112,type:"Luxury Suite",price:6000,facility:"Premium Facilities"}
+];
+
+let rooms = JSON.parse(localStorage.getItem("ygc_rooms")) || initialRooms;
+
+let bookings = JSON.parse(localStorage.getItem("ygc_bookings")) || [
+    {
+        id:1,
+        name:"Rahul Sharma",
+        mobile:"9876543210",
+        email:"rahul@gmail.com",
+        city:"Hyderabad",
+        room:101,
+        checkin:"2026-11-05",
+        days:2,
+        amount:2400,
+        status:"Occupied"
+    },
+    {
+        id:2,
+        name:"Priya Reddy",
+        mobile:"9876543211",
+        email:"priya@gmail.com",
+        city:"Kurnool",
+        room:103,
+        checkin:"2026-11-05",
+        days:3,
+        amount:6000,
+        status:"Occupied"
+    },
+    {
+        id:3,
+        name:"Arjun Kumar",
+        mobile:"9876543212",
+        email:"arjun@gmail.com",
+        city:"Bangalore",
+        room:105,
+        checkin:"2026-11-06",
+        days:2,
+        amount:6000,
+        status:"Occupied"
+    },
+    {
+        id:4,
+        name:"Sneha Patel",
+        mobile:"9876543213",
+        email:"sneha@gmail.com",
+        city:"Mumbai",
+        room:107,
+        checkin:"2026-11-06",
+        days:1,
+        amount:4500,
+        status:"Occupied"
+    },
+    {
+        id:5,
+        name:"Vikram Singh",
+        mobile:"9876543214",
+        email:"vikram@gmail.com",
+        city:"Delhi",
+        room:109,
+        checkin:"2026-11-04",
+        days:4,
+        amount:16000,
+        status:"Occupied"
+    },
+    {
+        id:6,
+        name:"Ananya Rao",
+        mobile:"9876543215",
+        email:"ananya@gmail.com",
+        city:"Chennai",
+        room:111,
+        checkin:"2026-11-03",
+        days:2,
+        amount:12000,
+        status:"Checked Out"
+    }
+];
+
+function saveData() {
+    localStorage.setItem("ygc_rooms", JSON.stringify(rooms));
+    localStorage.setItem("ygc_bookings", JSON.stringify(bookings));
+}
+
+
+// NAVIGATION
+
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    renderAll();
+}
+
+
+// ROOM STATUS
+
+function isOccupied(roomNo) {
+    return bookings.some(b =>
+        b.room === roomNo && b.status === "Occupied"
+    );
+}
+
+
+// DISPLAY ROOMS
+
+function displayRooms() {
+    let html = "";
+
+    rooms.forEach(room => {
+        const occupied = isOccupied(room.no);
+
+        html += `
+        <tr>
+            <td>${room.no}</td>
+            <td>${room.type}</td>
+            <td>₹${room.price.toLocaleString("en-IN")}</td>
+            <td>${room.facility}</td>
+            <td class="${occupied ? 'occupied' : 'available'}">
+                ${occupied ? 'Occupied' : 'Available'}
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("roomTable").innerHTML = html;
+
+    const select = document.getElementById("roomSelect");
+    const available = rooms.filter(r => !isOccupied(r.no));
+
+    select.innerHTML = available.length
+        ? available.map(r =>
+            `<option value="${r.no}">Room ${r.no} - ${r.type} (₹${r.price}/day)</option>`
+          ).join("")
+        : `<option value="">No rooms available</option>`;
+}
+
+
+// DISPLAY GUESTS
+
+function displayGuests() {
+    const search = document.getElementById("guestSearch")
+        .value.toLowerCase();
+
+    let html = "";
+
+    bookings.filter(b =>
+        b.name.toLowerCase().includes(search) ||
+        b.mobile.includes(search)
+    ).forEach(b => {
+        html += `
+        <tr>
+            <td>${b.name}</td>
+            <td>${b.mobile}</td>
+            <td>${b.email || "-"}</td>
+            <td>${b.city}</td>
+            <td>${b.room}</td>
+        </tr>`;
+    });
+
+    document.getElementById("guestTable").innerHTML =
+        html || `<tr><td colspan="5">No guests found</td></tr>`;
+}
+
+
+// DISPLAY BOOKINGS
+
+function displayBookings() {
+    let html = "";
+
+    bookings.filter(b => b.status === "Occupied").forEach(b => {
+        html += `
+        <tr>
+            <td>${b.name}</td>
+            <td>${b.room}</td>
+            <td>${b.checkin}</td>
+            <td>${b.days}</td>
+            <td>₹${b.amount.toLocaleString("en-IN")}</td>
+            <td class="occupied">${b.status}</td>
+            <td>
+                <button class="small-btn success"
+                    onclick="checkout(${b.id})">Check Out</button>
+                <button class="small-btn"
+                    onclick="printBill(${b.id})">Bill</button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("bookingTable").innerHTML =
+        html || `<tr><td colspan="7">No current bookings</td></tr>`;
+}
+
+
+// NEW BOOKING
+
+function addBooking(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("guestName").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const roomNo = Number(document.getElementById("roomSelect").value);
+    const checkin = document.getElementById("checkin").value;
+    const days = Number(document.getElementById("days").value);
+
+    const room = rooms.find(r => r.no === roomNo);
+
+    if (!room || isOccupied(roomNo)) {
+        alert("Please select an available room.");
+        return;
+    }
+
+    if (!checkin || days < 1) {
+        alert("Please enter a valid check-in date and number of days.");
+        return;
+    }
+
+    const amount = room.price * days;
+
+    const newBooking = {
+        id:Date.now(),
+        name,
+        mobile,
+        email,
+        city,
+        room:roomNo,
+        checkin,
+        days,
+        amount,
+        status:"Occupied"
+    };
+
+    bookings.push(newBooking);
+
+    saveData();
+
+    alert("Booking Successful!");
+
+    event.target.reset();
+
+    renderAll();
+    showSection("bookings");
+}
+
+
+// CHECK OUT
+
+function checkout(id) {
+    const booking = bookings.find(b => b.id === id);
+
+    if (!booking) return;
+
+    if (confirm("Confirm check-out for " + booking.name + "?")) {
+        booking.status = "Checked Out";
+
+        saveData();
+        renderAll();
+
+        alert("Guest checked out successfully!");
+    }
+}
+
+
+// BOOKING HISTORY
+
+function displayHistory() {
+    let html = "";
+
+    bookings.forEach(b => {
+        const checkOutDate = new Date(b.checkin + "T00:00:00");
+        checkOutDate.setDate(checkOutDate.getDate() + b.days);
+
+        const checkoutDate = checkOutDate.toLocaleDateString("en-IN");
+
+        html += `
+        <tr>
+            <td>${b.name}</td>
+            <td>${b.room}</td>
+            <td>${b.checkin}</td>
+            <td>${checkoutDate}</td>
+            <td>₹${b.amount.toLocaleString("en-IN")}</td>
+            <td>${b.status}</td>
+        </tr>`;
+    });
+
+    document.getElementById("historyTable").innerHTML =
+        html || `<tr><td colspan="6">No booking history</td></tr>`;
+}
+
+
+// BILL GENERATION
+
+function printBill(id) {
+    const b = bookings.find(item => item.id === id);
+
+    if (!b) return;
+
+    const room = rooms.find(r => r.no === b.room);
+
+    document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.getElementById("billPrint").classList.add("active");
+
+    document.getElementById("billDetails").innerHTML = `
+        <div style="text-align:center">
+            <h1>🏨 YOUSUF GRAND CONVENTION</h1>
+            <p>HOTEL INVOICE</p>
+            <hr><br>
+        </div>
+
+        <p><b>Guest Name:</b> ${b.name}</p>
+        <p><b>Mobile:</b> ${b.mobile}</p>
+        <p><b>Email:</b> ${b.email || "-"}</p>
+        <p><b>City:</b> ${b.city}</p>
+        <br>
+        <p><b>Room Number:</b> ${b.room}</p>
+        <p><b>Room Type:</b> ${room ? room.type : "-"}</p>
+        <p><b>Price Per Day:</b> ₹${room ? room.price : 0}</p>
+        <p><b>Check-in:</b> ${b.checkin}</p>
+        <p><b>Number of Days:</b> ${b.days}</p>
+
+        <hr><br>
+        <h2>Total Amount: ₹${b.amount.toLocaleString("en-IN")}</h2>
+
+        <br>
+        <p>Thank you for choosing Yousuf Grand Convention!</p>
+        <br>
+        <button onclick="window.print()">Print Bill</button>
+        <button onclick="showSection('bookings')">Back</button>
+    `;
+}
+
+
+// DASHBOARD STATISTICS
+
+function updateDashboard() {
+    const total = rooms.length;
+    const occupied = rooms.filter(r => isOccupied(r.no)).length;
+    const available = total - occupied;
+
+    const revenue = bookings.reduce((sum, b) =>
+        sum + b.amount, 0
+    );
+
+    document.getElementById("totalRooms").innerText = total;
+    document.getElementById("occupiedRooms").innerText = occupied;
+    document.getElementById("availableRooms").innerText = available;
+    document.getElementById("revenue").innerText =
+        "₹" + revenue.toLocaleString("en-IN");
+}
+
+
+// UPDATE EVERYTHING
+
+function renderAll() {
+    displayRooms();
+    displayGuests();
+    displayBookings();
+    displayHistory();
+    updateDashboard();
+}
+
+
+// INITIAL DATE
+
+document.getElementById("checkin").value =
+    new Date().toISOString().split("T")[0];
+
+</script>
+
+</body>
+</html>

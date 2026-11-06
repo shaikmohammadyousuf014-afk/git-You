@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Crumb Bakery</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fffaf4;
+    color: #3d2921;
+}
+
+/* NAVBAR */
+header {
+    background: #492719;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffd39b;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #ffc078;
+}
+
+.cart {
+    background: #f3a75e;
+    color: #492719;
+    padding: 9px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background:
+    linear-gradient(90deg, rgba(40,20,10,.85), rgba(40,20,10,.15)),
+    url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600')
+    center/cover;
+    color: white;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #f3a75e;
+    color: #492719;
+    padding: 13px 27px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ffd39b;
+}
+
+/* COMMON */
+section {
+    padding: 70px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: #572e1d;
+}
+
+.subtitle {
+    text-align: center;
+    color: #876b5b;
+    margin-bottom: 35px;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 48%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    line-height: 1.8;
+    color: #735b4e;
+    margin-bottom: 20px;
+}
+
+/* PRODUCTS */
+.products {
+    background: #f7eee4;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    border: 1px solid #a66b45;
+    background: white;
+    padding: 9px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #572e1d;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #572e1d;
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #b66a32;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.add-btn {
+    background: #572e1d;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #a65b32;
+}
+
+/* PROFILE */
+.profile {
+    text-align: center;
+    background: #fffaf4;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #e7b17d;
+    margin-bottom: 15px;
+}
+
+.profile p {
+    max-width: 650px;
+    margin: 12px auto;
+    line-height: 1.8;
+    color: #735b4e;
+}
+
+/* CONTACT */
+.contact {
+    background: #f7eee4;
+    text-align: center;
+}
+
+.contact p {
+    margin: 15px;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 25px auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 9px 0;
+    border: 1px solid #d6bda8;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* FOOTER */
+footer {
+    background: #492719;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer span {
+    color: #ffd39b;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">🍰 Sweet Crumb</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
+        <a href="#products" class="cart">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Freshly Baked With Love ❤️</h1>
+
+        <p>
+            Welcome to Sweet Crumb Bakery!
+            Enjoy delicious cakes, pastries, cookies
+            and freshly baked bread made with love.
+        </p>
+
+        <a href="#products" class="btn">Explore Products</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about">
+
+        <img
+        src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=900"
+        alt="Fresh bakery products">
+
+        <div class="about-content">
+            <h2>About Our Bakery</h2>
+
+            <p>
+                Sweet Crumb Bakery is a place where
+                every bite brings happiness. We believe
+                in quality ingredients, fresh baking
+                and wonderful customer experiences.
+            </p>
+
+            <p>
+                From birthday cakes to crispy cookies,
+                we prepare every product with passion
+                and care.
+            </p>
+
+            <a href="#products" class="btn">Discover More</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+
+    <h2 class="section-title">Our Delicious Products</h2>
+
+    <p class="subtitle">
+        Taste the happiness in every bite!
+    </p>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('All',this)">All</button>
+        <button class="filter-btn" onclick="filterProducts('Cakes',this)">Cakes</button>
+        <button class="filter-btn" onclick="filterProducts('Pastries',this)">Pastries</button>
+        <button class="filter-btn" onclick="filterProducts('Cookies',this)">Cookies</button>
+        <button class="filter-btn" onclick="filterProducts('Bread',this)">Bread</button>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+        <div class="product-card" data-category="Cakes">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700" alt="Chocolate cake">
+            <div class="product-info">
+                <h3>Chocolate Cake</h3>
+                <p class="price">₹450</p>
+                <button class="add-btn" onclick="addToCart('Chocolate Cake',450)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="Cakes">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=700" alt="Strawberry cake">
+            <div class="product-info">
+                <h3>Strawberry Cake</h3>
+                <p class="price">₹500</p>
+                <button class="add-btn" onclick="addToCart('Strawberry Cake',500)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="Pastries">
+            <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?w=700" alt="Pastry">
+            <div class="product-info">
+                <h3>Sweet Pastry</h3>
+                <p class="price">₹80</p>
+                <button class="add-btn" onclick="addToCart('Sweet Pastry',80)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="Cookies">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=700" alt="Cookies">
+            <div class="product-info">
+                <h3>Chocolate Cookies</h3>
+                <p class="price">₹120</p>
+                <button class="add-btn" onclick="addToCart('Chocolate Cookies',120)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="Bread">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700" alt="Fresh bread">
+            <div class="product-info">
+                <h3>Fresh Bread</h3>
+                <p class="price">₹60</p>
+                <button class="add-btn" onclick="addToCart('Fresh Bread',60)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="Pastries">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700" alt="Croissant">
+            <div class="product-info">
+                <h3>Butter Croissant</h3>
+                <p class="price">₹100</p>
+                <button class="add-btn" onclick="addToCart('Butter Croissant',100)">Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BAKERY PROFILE -->
+<section class="profile" id="profile">
+
+    <h2 class="section-title">Our Bakery Profile</h2>
+
+    <img
+    src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=500"
+    alt="Bakery owner profile">
+
+    <h3>Sweet Crumb Bakery</h3>
+
+    <p>
+        Our mission is to deliver fresh, tasty and
+        high-quality bakery products to every customer.
+        We make every celebration sweeter with our
+        delicious creations.
+    </p>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <p>We would love to hear from you!</p>
+
+    <p>📍 Location: Kurnool, Andhra Pradesh</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>✉️ Email: sweetcrumb@gmail.com</p>
+
+    <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <input type="email" id="email" placeholder="Your Email" required>
+
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Sweet Crumb Bakery</span>. All Rights Reserved.</p>
+    <p>Made with ❤️ for bakery lovers.</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// Shopping cart
+let cart = [];
+let cartCount = 0;
+
+function addToCart(name, price) {
+
+    cart.push({name: name, price: price});
+    cartCount++;
+
+    document.getElementById("cart-count").innerText = cartCount;
+
+    alert(name + " added to your cart!");
+
+    console.log("Cart:", cart);
+}
+
+// Product category filter
+function filterProducts(category, button) {
+
+    let products = document.querySelectorAll(".product-card");
+    let buttons = document.querySelectorAll(".filter-btn");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    products.forEach(product => {
+
+        if (category === "All" ||
+            product.dataset.category === category) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+        }
+    });
+}
+
+// Contact form
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+
+    alert("Thank you " + name + "! Your message has been received.");
+
+    document.querySelector("form").reset();
+}
+
+</script>
+
+</body>
+</html>

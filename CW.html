@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yousuf College of Engineering and Technology</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f5ed;
+            color: #17243a;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #10213b;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #e8bd65;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e8bd65;
+        }
+
+        .apply-btn {
+            background: #d9a441;
+            color: #10213b;
+            padding: 11px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            color: white;
+            background:
+                linear-gradient(rgba(9, 25, 48, 0.78), rgba(9, 25, 48, 0.78)),
+                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .tag {
+            color: #e8bd65;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .main-btn {
+            display: inline-block;
+            background: #d9a441;
+            color: #10213b;
+            padding: 14px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* COMMON */
+        section {
+            padding: 75px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading span {
+            color: #bd8b2d;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            margin-top: 12px;
+            color: #10213b;
+        }
+
+        .section-heading p {
+            color: #666;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #10213b;
+            color: white;
+            padding: 35px 8%;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat h2 {
+            color: #e8bd65;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-text h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* DEPARTMENTS */
+        .departments {
+            background: #eee9dc;
+        }
+
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .department-card {
+            background: white;
+            padding: 28px;
+            border-radius: 9px;
+            border-bottom: 4px solid #d9a441;
+            transition: 0.3s;
+        }
+
+        .department-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .department-card .number {
+            font-size: 30px;
+            color: #bd8b2d;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .department-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .department-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* FACILITIES */
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .facility-card div {
+            padding: 20px;
+        }
+
+        .facility-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .facility-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CAMPUS BANNER */
+        .campus-banner {
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(rgba(10, 25, 45, 0.78), rgba(10, 25, 45, 0.78)),
+                url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+            padding: 100px 8%;
+        }
+
+        .campus-banner h2 {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .campus-banner p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* LEADERSHIP */
+        .leadership {
+            background: #eee9dc;
+        }
+
+        .leader-card {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            align-items: center;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .leader-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .leader-card h3 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .leader-card .role {
+            color: #bd8b2d;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .leader-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ADMISSIONS */
+        .admissions {
+            background: #10213b;
+            color: white;
+        }
+
+        .admissions .section-heading h2 {
+            color: white;
+        }
+
+        .admissions .section-heading p {
+            color: #ddd;
+        }
+
+        .form-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            color: #17243a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-box input,
+        .form-box select,
+        .form-box textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-box button {
+            width: 100%;
+            padding: 14px;
+            background: #d9a441;
+            color: #10213b;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-box button:hover {
+            background: #c18c2e;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #09172b;
+            color: white;
+            padding: 35px 8%;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: #e8bd65;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about,
+            .contact-grid,
+            .leader-card {
+                grid-template-columns: 1fr;
+            }
+
+            .department-grid,
+            .facility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .department-grid,
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="logo">YOUSUF COLLEGE</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#departments">Departments</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#admissions">Admissions</a>
+            <a href="#contact">Contact</a>
+            <a href="#admissions" class="apply-btn">Apply Now</a>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">EST. 2010 | AICTE APPROVED</div>
+
+            <h1>Yousuf College of Engineering and Technology</h1>
+
+            <p>
+                Building tomorrow's engineers through quality education,
+                innovation, practical learning and excellence.
+                Join us to discover your potential and create a successful future.
+            </p>
+
+            <a href="#about" class="main-btn">Discover More</a>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <h2>45 Acres</h2>
+            <p>Beautiful Campus</p>
+        </div>
+
+        <div class="stat">
+            <h2>7+</h2>
+            <p>Departments</p>
+        </div>
+
+        <div class="stat">
+            <h2>2010</h2>
+            <p>Established</p>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about">
+            <img
+                src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1000&q=80"
+                alt="College campus">
+
+            <div class="about-text">
+                <span class="tag">ABOUT OUR COLLEGE</span>
+
+                <h2>Welcome to Yousuf College</h2>
+
+                <p>
+                    Yousuf College of Engineering and Technology is committed
+                    to providing quality technical education and developing
+                    skilled professionals for the future.
+                </p>
+
+                <p>
+                    Our focus is on academic excellence, practical knowledge,
+                    innovation, discipline and overall student development.
+                </p>
+
+                <p>
+                    We encourage students to explore new ideas, improve their
+                    technical skills and become responsible professionals.
+                </p>
+
+                <a href="#departments" class="main-btn">Explore Departments</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPARTMENTS -->
+    <section class="departments" id="departments">
+        <div class="section-heading">
+            <span>OUR ACADEMICS</span>
+            <h2>Our Departments</h2>
+            <p>Choose your path and build your professional career.</p>
+        </div>
+
+        <div class="department-grid">
+            <div class="department-card">
+                <div class="number">01</div>
+                <h3>Computer Science Engineering</h3>
+                <p>Learn programming, software development, databases and modern technologies.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">02</div>
+                <h3>Artificial Intelligence & Data Science</h3>
+                <p>Explore artificial intelligence, machine learning and data analytics.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">03</div>
+                <h3>Electronics & Communication</h3>
+                <p>Study electronics, communication systems and embedded technologies.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">04</div>
+                <h3>Electrical Engineering</h3>
+                <p>Understand electrical machines, power systems and circuits.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">05</div>
+                <h3>Mechanical Engineering</h3>
+                <p>Learn manufacturing, design, mechanics and industrial technologies.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">06</div>
+                <h3>Civil Engineering</h3>
+                <p>Develop knowledge of construction, structures and infrastructure.</p>
+            </div>
+
+            <div class="department-card">
+                <div class="number">07</div>
+                <h3>Management Studies</h3>
+                <p>Build leadership, business, communication and management skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section id="facilities">
+        <div class="section-heading">
+            <span>CAMPUS LIFE</span>
+            <h2>Our Facilities</h2>
+            <p>Providing an environment for learning, growth and development.</p>
+        </div>
+
+        <div class="facility-grid">
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80"
+                    alt="Library">
+
+                <div>
+                    <h3>Digital Library</h3>
+                    <p>A learning space with books, reference materials and study resources.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80"
+                    alt="Computer laboratory">
+
+                <div>
+                    <h3>Computer Laboratories</h3>
+                    <p>Practical learning facilities for programming and technical education.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80"
+                    alt="Sports">
+
+                <div>
+                    <h3>Sports Facilities</h3>
+                    <p>Encouraging fitness, teamwork and sports participation.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80"
+                    alt="Hostel">
+
+                <div>
+                    <h3>Hostel</h3>
+                    <p>Comfortable accommodation facilities for students.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80"
+                    alt="Seminar hall">
+
+                <div>
+                    <h3>Seminar Hall</h3>
+                    <p>A space for workshops, presentations and technical events.</p>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <img
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+                    alt="Campus environment">
+
+                <div>
+                    <h3>Campus Environment</h3>
+                    <p>A welcoming environment for academic and personal development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAMPUS BANNER -->
+    <div class="campus-banner">
+        <h2>Learn Today. Lead Tomorrow.</h2>
+        <p>
+            Discover opportunities, develop your skills and prepare yourself
+            for a brighter future at Yousuf College of Engineering and Technology.
+        </p>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <section class="leadership">
+        <div class="section-heading">
+            <span>OUR LEADERSHIP</span>
+            <h2>Message from the Leadership</h2>
+        </div>
+
+        <div class="leader-card">
+            <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                alt="College leadership profile">
+
+            <div>
+                <h3>College Leadership</h3>
+                <p class="role">Leadership & Management</p>
+
+                <p>
+                    Education is the foundation of a successful society.
+                    Our commitment is to support students with quality
+                    education, practical knowledge and opportunities to grow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSIONS -->
+    <section class="admissions" id="admissions">
+        <div class="section-heading">
+            <span>START YOUR JOURNEY</span>
+            <h2>Admissions Enquiry</h2>
+            <p>Fill in your details and express your interest in joining us.</p>
+        </div>
+
+        <form class="form-box" id="admissionForm">
+            <input type="text" id="studentName" placeholder="Your Full Name" required>
+
+            <input type="email" id="studentEmail" placeholder="Your Email Address" required>
+
+            <input type="tel" id="studentPhone" placeholder="Your Mobile Number"
+                   pattern="[0-9]{10}" maxlength="10" required>
+
+            <select id="course" required>
+                <option value="">Select Department</option>
+                <option>Computer Science Engineering</option>
+                <option>Artificial Intelligence & Data Science</option>
+                <option>Electronics & Communication</option>
+                <option>Electrical Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+                <option>Management Studies</option>
+            </select>
+
+            <textarea id="message" rows="4"
+                      placeholder="Your Message"></textarea>
+
+            <button type="submit">Submit Enquiry</button>
+        </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-heading">
+            <span>GET IN TOUCH</span>
+            <h2>Contact Us</h2>
+            <p>We would be happy to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Yousuf College of Engineering and Technology</h3>
+
+                <p><strong>Address:</strong><br>
+                    Add your college address here.
+                </p>
+
+                <p><strong>Email:</strong><br>
+                    info@yousufcollege.edu.in
+                </p>
+
+                <p><strong>Phone:</strong><br>
+                    +91 00000 00000
+                </p>
+
+                <p><strong>Working Hours:</strong><br>
+                    Monday – Saturday: 9:00 AM to 5:00 PM
+                </p>
+            </div>
+
+            <form class="form-box" id="contactForm">
+                <input type="text" id="contactName"
+                       placeholder="Your Name" required>
+
+                <input type="email" id="contactEmail"
+                       placeholder="Your Email" required>
+
+                <textarea id="contactMessage" rows="5"
+                          placeholder="Write your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Yousuf College of Engineering and Technology</h3>
+
+        <p>
+            Quality Education | Innovation | Excellence
+        </p>
+
+        <p>
+            © 2026 Yousuf College of Engineering and Technology.
+            All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Admission form
+        document.getElementById("admissionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("studentName").value;
+
+            alert("Thank you, " + name + "! Your admission enquiry has been submitted.");
+
+            this.reset();
+        });
+
+        // Contact form
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("contactName").value;
+
+            alert("Thank you, " + name + "! Your message has been received.");
+
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                const target = document.querySelector(this.getAttribute("href"));
+
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
